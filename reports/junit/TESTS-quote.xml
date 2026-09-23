@@ -1,0 +1,124 @@
+<testsuite name="quote.Quote creation" tests="4" errors="0" failures="2" skipped="0" time="43.892122" timestamp="2026-09-23T06:30:56.733845" hostname="Krzysztos-MacBook-Air.local"><testcase classname="quote.Quote creation" name="Create a conversion quote -- @1.1 " status="passed" time="6.901371"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Create a conversion quote -- @1.1 
+    Given I initialize a new API account ... passed in 0.681s
+    And I identify the "ETH" wallet "before" the operation ... passed in 0.090s
+    And I identify the "TRX" wallet "before" the operation ... passed in 0.290s
+    And I record the "ETH" wallet balance "before" the operation ... passed in 0.000s
+    And I record the "TRX" wallet balance "before" the operation ... passed in 0.000s
+    When I create a quote from "ETH" to "TRX" for "1" ... passed in 0.074s
+    Then the response status code is 201 ... passed in 0.000s
+    And the quote has the requested currencies ... passed in 0.000s
+    And the quote has a positive exchange rate ... passed in 0.000s
+    And the quote has a future acceptance expiry date ... passed in 0.000s
+    And the quote has a "0.01" percent service fee ... passed in 0.001s
+    And the quote value fee is correctly calculated ... passed in 0.000s
+    When I accept the created quote ... passed in 0.136s
+    Then the response status code is 200 ... passed in 0.000s
+    And the quote is accepted and payment is processing ... passed in 0.000s
+    When I wait for the quote payment to complete ... passed in 5.490s
+    Then the created quote and the accepted quote match outside lifecycle fields ... passed in 0.000s
+    And I identify the "ETH" wallet "after" the operation ... passed in 0.067s
+    And I identify the "TRX" wallet "after" the operation ... passed in 0.070s
+    And I record the "ETH" wallet balance "after" the operation ... passed in 0.000s
+    And I record the "TRX" wallet balance "after" the operation ... passed in 0.000s
+    And the wallet balances reflect the completed conversion ... passed in 0.000s
+    And the output amount is correctly calculated ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="quote.Quote creation" name="Create a conversion quote -- @1.2 " status="failed" time="8.485141"><failure type="AssertionError" message="Expected quote amountOut 91.64337754572000, but received 91.643377.">
+<![CDATA[
+Failing step: And the output amount is correctly calculated ... failed in 0.000s
+Location: features/quote.feature:26
+Assertion Failed: Expected quote amountOut 91.64337754572000, but received 91.643377.]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Create a conversion quote -- @1.2 
+    Given I initialize a new API account ... passed in 0.574s
+    And I identify the "TRX" wallet "before" the operation ... passed in 0.077s
+    And I identify the "USDT" wallet "before" the operation ... passed in 0.144s
+    And I record the "TRX" wallet balance "before" the operation ... passed in 0.000s
+    And I record the "USDT" wallet balance "before" the operation ... passed in 0.000s
+    When I create a quote from "TRX" to "USDT" for "420" ... passed in 0.076s
+    Then the response status code is 201 ... passed in 0.000s
+    And the quote has the requested currencies ... passed in 0.000s
+    And the quote has a positive exchange rate ... passed in 0.000s
+    And the quote has a future acceptance expiry date ... passed in 0.000s
+    And the quote has a "0.01" percent service fee ... passed in 0.000s
+    And the quote value fee is correctly calculated ... passed in 0.000s
+    When I accept the created quote ... passed in 0.084s
+    Then the response status code is 200 ... passed in 0.000s
+    And the quote is accepted and payment is processing ... passed in 0.000s
+    When I wait for the quote payment to complete ... passed in 5.546s
+    Then the created quote and the accepted quote match outside lifecycle fields ... passed in 0.000s
+    And I identify the "TRX" wallet "after" the operation ... passed in 0.514s
+    And I identify the "USDT" wallet "after" the operation ... passed in 1.468s
+    And I record the "TRX" wallet balance "after" the operation ... passed in 0.000s
+    And I record the "USDT" wallet balance "after" the operation ... passed in 0.000s
+    And the wallet balances reflect the completed conversion ... passed in 0.000s
+    And the output amount is correctly calculated ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="quote.Quote creation" name="Create a conversion quote -- @1.3 " status="failed" time="6.269297"><failure type="AssertionError" message="Expected quote amountOut 0.07736319290700, but received 0.07736303.">
+<![CDATA[
+Failing step: And the output amount is correctly calculated ... failed in 0.000s
+Location: features/quote.feature:26
+Assertion Failed: Expected quote amountOut 0.07736319290700, but received 0.07736303.]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Create a conversion quote -- @1.3 
+    Given I initialize a new API account ... passed in 0.510s
+    And I identify the "TRX" wallet "before" the operation ... passed in 0.126s
+    And I identify the "ETH" wallet "before" the operation ... passed in 0.074s
+    And I record the "TRX" wallet balance "before" the operation ... passed in 0.000s
+    And I record the "ETH" wallet balance "before" the operation ... passed in 0.000s
+    When I create a quote from "TRX" to "ETH" for "987" ... passed in 0.069s
+    Then the response status code is 201 ... passed in 0.000s
+    And the quote has the requested currencies ... passed in 0.000s
+    And the quote has a positive exchange rate ... passed in 0.000s
+    And the quote has a future acceptance expiry date ... passed in 0.000s
+    And the quote has a "0.01" percent service fee ... passed in 0.000s
+    And the quote value fee is correctly calculated ... passed in 0.000s
+    When I accept the created quote ... passed in 0.141s
+    Then the response status code is 200 ... passed in 0.000s
+    And the quote is accepted and payment is processing ... passed in 0.000s
+    When I wait for the quote payment to complete ... passed in 5.190s
+    Then the created quote and the accepted quote match outside lifecycle fields ... passed in 0.000s
+    And I identify the "TRX" wallet "after" the operation ... passed in 0.082s
+    And I identify the "ETH" wallet "after" the operation ... passed in 0.076s
+    And I record the "TRX" wallet balance "after" the operation ... passed in 0.000s
+    And I record the "ETH" wallet balance "after" the operation ... passed in 0.000s
+    And the wallet balances reflect the completed conversion ... passed in 0.000s
+    And the output amount is correctly calculated ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="quote.Quote creation" name="An expired quote cannot be accepted" status="passed" time="22.236313"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: An expired quote cannot be accepted
+    Given I initialize a new API account ... passed in 0.409s
+    And I identify the "TRX" wallet "before" the operation ... passed in 0.088s
+    And I identify the "USDT" wallet "before" the operation ... passed in 0.083s
+    When I create a quote from "TRX" to "USDT" for "100" ... passed in 0.152s
+    Then the response status code is 201 ... passed in 0.000s
+    When I wait 21 seconds for the created quote to expire ... passed in 21.003s
+    And I retrieve the created quote ... passed in 0.291s
+    Then the response status code is 200 ... passed in 0.000s
+    And the created quote is expired ... passed in 0.000s
+    When I try to accept the created quote ... passed in 0.209s
+    Then the response status code is 412 ... passed in 0.000s
+    And the response detail is "Precondition Failed" ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
