@@ -213,21 +213,18 @@ def step_verify_wallet_balances(context) -> None:
     )
     expected_target_after = target_before + amount_out
 
-    source_rounding_unit = Decimal("1").scaleb(
-        -len(str(context.wallets_after[source_currency]["balance"]).partition(".")[2])
-    )
-    assert source_after.quantize(source_rounding_unit) == (
-        expected_source_after.quantize(source_rounding_unit)
+    amountOut_decimal_places = len(context.created_quote["amountOut"].partition(".")[2])
+    rounding_unit = Decimal("0." + "0" * amountOut_decimal_places)
+
+    assert source_after.quantize(rounding_unit) == (
+        expected_source_after.quantize(rounding_unit)
     ), (
         f"Expected {source_currency} balance {expected_source_after}, "
         f"but received {source_after}."
     )
 
-    target_rounding_unit = Decimal("1").scaleb(
-        -len(str(context.wallets_after[target_currency]["balance"]).partition(".")[2])
-    )
-    assert target_after.quantize(target_rounding_unit) == (
-        expected_target_after.quantize(target_rounding_unit)
+    assert target_after.quantize(rounding_unit) == (
+        expected_target_after.quantize(rounding_unit)
     ), (
         f"Expected {target_currency} balance {expected_target_after}, "
         f"but received {target_after}."
@@ -261,14 +258,17 @@ def step_verify_output_amount(context) -> None:
     )
 
     expected_amount_out = (quote_amount_due - quote_value_service_fee) * quote_price
-    output_rounding_unit = Decimal("1").scaleb(
-        -len(context.created_quote["amountOut"].partition(".")[2])
-    )
-    assert quote_amount_out.quantize(output_rounding_unit) == (
-        expected_amount_out.quantize(output_rounding_unit)
+    amountOut_decimal_places = len(context.created_quote["amountOut"].partition(".")[2])
+    output_rounding_unit = Decimal("0." + "0" * amountOut_decimal_places)
+
+    rounded_quote_amount_out = quote_amount_out.quantize(output_rounding_unit)
+    rounded_expected_amount_out = expected_amount_out.quantize(output_rounding_unit)
+
+    assert rounded_quote_amount_out == (
+        rounded_expected_amount_out
     ), (
-        f"Expected quote amountOut {expected_amount_out}, "
-        f"but received {quote_amount_out}."
+        f"Expected quote amountOut {rounded_expected_amount_out}, "
+        f"but received {rounded_quote_amount_out}."
     )
 
     

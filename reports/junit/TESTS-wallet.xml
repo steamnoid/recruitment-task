@@ -1,9 +1,9 @@
-<testsuite name="wallet.Wallet retrieval" tests="2" errors="0" failures="0" skipped="0" time="1.587605" timestamp="2026-09-23T06:30:58.328573" hostname="Krzysztos-MacBook-Air.local"><testcase classname="wallet.Wallet retrieval" name="Retrieve initialized account wallets -- @1.1 " status="passed" time="1.065379"><system-out>
+<testsuite name="wallet.Wallet retrieval" tests="2" errors="0" failures="0" skipped="0" time="0.880973" timestamp="2026-09-23T06:57:32.020815" hostname="Krzysztos-MacBook-Air.local"><testcase classname="wallet.Wallet retrieval" name="Retrieve initialized account wallets -- @1.1 " status="passed" time="0.444536"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario Outline: Retrieve initialized account wallets -- @1.1 
-    Given I initialize a new API account ... passed in 0.366s
-    When I request "/api/wallet" with authentication ... passed in 0.699s
+    Given I initialize a new API account ... passed in 0.358s
+    When I request "/api/wallet" with authentication ... passed in 0.086s
     Then the response status code is 200 ... passed in 0.000s
     And the response contains 3 wallets ... passed in 0.000s
     And every wallet has an ID, currency and balance ... passed in 0.000s
@@ -11,12 +11,12 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="wallet.Wallet retrieval" name="Retrieve initialized account wallets -- @1.2 " status="passed" time="0.522226"><system-out>
+</system-out></testcase><testcase classname="wallet.Wallet retrieval" name="Retrieve initialized account wallets -- @1.2 " status="passed" time="0.436437"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario Outline: Retrieve initialized account wallets -- @1.2 
-    Given I initialize a new API account ... passed in 0.453s
-    When I request "/api/wallet?offset=0&max_count=2" with authentication ... passed in 0.069s
+    Given I initialize a new API account ... passed in 0.345s
+    When I request "/api/wallet?offset=0&max_count=2" with authentication ... passed in 0.091s
     Then the response status code is 200 ... passed in 0.000s
     And the response contains 2 wallets ... passed in 0.000s
     And every wallet has an ID, currency and balance ... passed in 0.000s
